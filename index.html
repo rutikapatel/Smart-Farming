@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="refresh" content="5"/>
+<title>JavaScript and HTML</title>
+<meta charset="utf-8" />
+
+<script>
+    var interval = setInterval(Button_onclick, 2000);
+    function Button_onclick() {
+        var request = new XMLHttpRequest();
+
+        request.open('GET', 'http://blynk-cloud.com/8f27a470e550435db24977f47078d4bf/get/V1');
+
+        request.onreadystatechange = function () {
+            if (this.readyState === 4) {
+                console.log('Status:', this.status);
+                console.log('Headers:', this.getAllResponseHeaders());
+                console.log('Body:', this.responseText);
+                var temp1 = this.responseText;
+                p = document.createElement("p");
+                p.innerHTML = "Temperature :" + temp1 ;
+                document.body.appendChild(p);
+            }
+        };
+
+        request.send();
+        var request = new XMLHttpRequest();
+
+        request.open('GET', 'http://blynk-cloud.com/8f27a470e550435db24977f47078d4bf/get/V0');
+
+        request.onreadystatechange = function () {
+            if (this.readyState === 4) {
+                console.log('Status:', this.status);
+                console.log('Headers:', this.getAllResponseHeaders());
+                console.log('Body:', this.responseText);
+                var temp2 = this.responseText;
+                p = document.createElement("p");
+                p.innerHTML = "Humidity :" + temp2;
+                document.body.appendChild(p);
+            }
+        };
+
+        request.send();
+
+        var request = new XMLHttpRequest();
+
+        request.open('GET', 'http://blynk-cloud.com/8f27a470e550435db24977f47078d4bf/get/V3');
+
+        request.onreadystatechange = function () {
+            if (this.readyState === 4) {
+                console.log('Status:', this.status);
+                console.log('Headers:', this.getAllResponseHeaders());
+                console.log('Body:', this.responseText);
+                var temp2 = this.responseText;
+                p = document.createElement("p");
+                p.innerHTML = "Soil Muisture  :" + temp2;
+                document.body.appendChild(p);
+            }
+        };
+
+        request.send();
+
+        var request = new XMLHttpRequest();
+
+        request.open('GET', 'http://blynk-cloud.com/8f27a470e550435db24977f47078d4bf/get/V4');
+
+        request.onreadystatechange = function () {
+            if (this.readyState === 4) {
+                console.log('Status:', this.status);
+                console.log('Headers:', this.getAllResponseHeaders());
+                console.log('Body:', this.responseText);
+                var temp2 = this.responseText;
+                p = document.createElement("p");
+                p.innerHTML = "Water Tank Level  :" + temp2;
+                document.body.appendChild(p);
+            }
+        };
+
+        request.send();
+    }
+    function Button1_onclick() {
+        var request = new XMLHttpRequest();
+
+        request.open('GET', 'http://blynk-cloud.com/8f27a470e550435db24977f47078d4bf/update/V2?value=1212');
+
+
+        request.onreadystatechange = function () {
+            if (this.readyState === 4) {
+                console.log('Status:', this.status);
+                console.log('Headers:', this.getAllResponseHeaders());
+                console.log('Body:', this.responseText);
+            }
+        };
+
+        request.send();
+    }
+    function Button2_onclick() {
+        var request = new XMLHttpRequest();
+
+        request.open('GET', 'http://blynk-cloud.com/8f27a470e550435db24977f47078d4bf/update/V2?value=1111');
+
+        request.onreadystatechange = function () {
+            if (this.readyState === 4) {
+                console.log('Status:', this.status);
+                console.log('Headers:', this.getAllResponseHeaders());
+                console.log('Body:', this.responseText);
+            }
+        };
+
+        request.send();
+    }
+
+</script>
+</head>
+<body>
+    <h1 id="mainTitle">IOT Sensors for SOIL Analysis</h1>
+    <p>Project Design By GCET Students</p>
+    <button id="Button" onclick="return Button_onclick()">READ SENSORS</button>
+    <button id="Button2" onclick="return Button2_onclick()">PumpON</button>
+    <button id="Button1" onclick="return Button1_onclick()">PumpOFF</button>
+    
+    &nbsp;
+    
+</body>
+</html>
